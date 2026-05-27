@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="IAtendo - A secretária IA que não dorme">
+  <title>IAtendo - OG Image</title>
+  <desc>Imagem de preview para compartilhamento em redes sociais e links: logo IAtendo à esquerda, tagline e proposta de valor à direita, sobre fundo verde-petróleo da marca.</desc>
+
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F4C5C"/>
+      <stop offset="100%" stop-color="#1A8870"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Fundo gradient verde-petróleo > azul-noite -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Padrão sutil: balões de chat translúcidos como textura de fundo -->
+  <g opacity="0.06" fill="#FFFFFF">
+    <circle cx="1050" cy="80" r="60"/>
+    <circle cx="1130" cy="180" r="35"/>
+    <circle cx="980" cy="540" r="50"/>
+    <circle cx="1100" cy="580" r="30"/>
+  </g>
+
+  <!-- Coluna esquerda: símbolo + wordmark mono branco -->
+  <g transform="translate(80, 195)">
+    <!-- Balão símbolo grande -->
+    <circle cx="105" cy="105" r="100" fill="#FFFFFF"/>
+    <polygon points="45,210 80,160 100,180" fill="#FFFFFF"/>
+    <text x="105" y="138" font-family="Inter, system-ui, sans-serif" font-size="92" font-weight="900" fill="#0F4C5C" text-anchor="middle" letter-spacing="-2">IA</text>
+  </g>
+
+  <!-- Coluna direita: tagline grande + sub + url -->
+  <g transform="translate(460, 0)">
+    <!-- Tagline principal -->
+    <text x="0" y="245" font-family="Inter, system-ui, sans-serif" font-size="72" font-weight="800" fill="#FFFFFF" letter-spacing="-2">A secretária IA</text>
+    <text x="0" y="325" font-family="Inter, system-ui, sans-serif" font-size="72" font-weight="800" fill="#FFFFFF" letter-spacing="-2">que não dorme.</text>
+
+    <!-- Linha divisória -->
+    <rect x="0" y="365" width="100" height="3" fill="#A7C5CC"/>
+
+    <!-- Sub-tagline -->
+    <text x="0" y="415" font-family="Inter, system-ui, sans-serif" font-size="28" font-weight="500" fill="#E5EEF1">Atende seu cliente 24/7 no WhatsApp.</text>
+    <text x="0" y="450" font-family="Inter, system-ui, sans-serif" font-size="28" font-weight="500" fill="#E5EEF1">Marca direto no Google Calendar.</text>
+
+    <!-- URL com seta -->
+    <text x="0" y="535" font-family="Inter, system-ui, sans-serif" font-size="26" font-weight="700" fill="#FFFFFF" letter-spacing="1">iatendo.com  →</text>
+
+    <!-- Badge wordmark IAtendo (canto superior direito do bloco) -->
+    <text x="0" y="125" font-family="Inter, system-ui, sans-serif" font-size="44" font-weight="800" fill="#FFFFFF" letter-spacing="-1">IAtendo</text>
+    <text x="0" y="160" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#A7C5CC" letter-spacing="4">SAAS DE AGENDAMENTO POR IA · WHATSAPP</text>
+  </g>
+</svg>
