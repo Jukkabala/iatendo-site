@@ -206,6 +206,22 @@ footer ul li { padding: 4px 0; }
 .fab-whatsapp:hover { transform: scale(1.1); text-decoration: none !important; }
 .fab-whatsapp svg { width: 32px; height: 32px; fill: white; }
 
+/* PARCEIRA — clínica em produção */
+.partner-section { background: var(--bg-soft); }
+.partner-card { background: white; border-radius: 16px; padding: 32px; display: grid; grid-template-columns: 1fr; gap: 28px; align-items: center; max-width: 880px; margin: 0 auto; box-shadow: 0 4px 24px rgba(15,76,92,0.08); }
+.partner-logo-box { background: #FAFAFA; border: 1px dashed var(--border); border-radius: 12px; padding: 32px 20px; text-align: center; min-height: 160px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 6px; }
+.partner-logo-box img { max-width: 100%; max-height: 140px; height: auto; }
+.partner-logo-box .placeholder-name { font-size: 22px; font-weight: 800; color: var(--primary); letter-spacing: -0.5px; line-height: 1.1; }
+.partner-logo-box .placeholder-sub { font-size: 10px; font-weight: 600; color: var(--text-muted); letter-spacing: 3px; }
+.partner-data h3 { font-size: 20px; margin-bottom: 4px; color: var(--secondary); }
+.partner-data .specialty { font-size: 13px; color: var(--text-muted); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 18px; }
+.partner-data dl { display: grid; grid-template-columns: max-content 1fr; gap: 10px 16px; font-size: 14px; margin-top: 4px; }
+.partner-data dt { font-weight: 700; color: var(--secondary); }
+.partner-data dd { color: var(--text-body); margin: 0; }
+.partner-data dd a { color: var(--primary); }
+.partner-status { display: inline-flex; align-items: center; gap: 8px; background: var(--primary); color: white; padding: 6px 14px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-top: 20px; }
+.partner-status::before { content: "●"; animation: pulse 2s infinite; }
+
 /* RESPONSIVE — desktop */
 @media (min-width: 768px) {
   h1 { font-size: 44px; }
@@ -216,6 +232,7 @@ footer ul li { padding: 4px 0; }
   .escopo-grid { grid-template-columns: 1fr 1fr; }
   .plans { grid-template-columns: repeat(3, 1fr); align-items: start; }
   .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; }
+  .partner-card { grid-template-columns: 1fr 1.4fr; padding: 48px; gap: 40px; }
   section { padding: 96px 0; }
 }
 </style>
@@ -244,7 +261,7 @@ footer ul li { padding: 4px 0; }
         <a href="#video" class="btn btn-secondary btn-large">Ver em 60 segundos</a>
       </div>
       <div class="pilot-badge">
-        Em produção na primeira clínica piloto em Serra/ES desde maio de 2026.
+        Em produção no <strong>Espaço Energize · Dra. Jeanine Viana</strong> · Serra/ES — desde maio/2026.
       </div>
     </div>
     <div class="hero-mockup">
@@ -275,6 +292,33 @@ footer ul li { padding: 4px 0; }
       <span class="badge">LGPD compliant</span>
       <span class="badge">Integra Google Calendar</span>
       <span class="badge">WhatsApp oficial Meta</span>
+    </div>
+  </div>
+</section>
+
+<!-- ====== CLÍNICA PARCEIRA EM PRODUÇÃO ====== -->
+<section class="partner-section" id="parceira">
+  <div class="container">
+    <div class="section-head">
+      <h2>Clínica em produção</h2>
+      <p>Quem já está no ar com IAtendo no atendimento ao cliente.</p>
+    </div>
+    <div class="partner-card">
+      <!-- TODO: substituir o placeholder abaixo pela <img src="/logo_espaco_energize.png" alt="Espaço Energize"> quando o arquivo oficial for adicionado ao repo -->
+      <div class="partner-logo-box">
+        <div class="placeholder-name">Espaço Energize</div>
+        <div class="placeholder-sub">TERAPIAS INTEGRADAS</div>
+      </div>
+      <div class="partner-data">
+        <h3>Espaço Energize</h3>
+        <div class="specialty">Terapias Integradas</div>
+        <dl>
+          <dt>Responsável</dt><dd>Dra. Jeanine Viana</dd>
+          <dt>Endereço</dt><dd>Rua da Aldeia, 76 — Laranjeiras, Serra/ES</dd>
+          <dt>WhatsApp</dt><dd><a href="https://wa.me/5527992838774" target="_blank" rel="noopener">+55 27 99283-8774</a></dd>
+        </dl>
+        <div class="partner-status">Em produção desde maio/2026</div>
+      </div>
     </div>
   </div>
 </section>
