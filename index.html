@@ -129,10 +129,8 @@ section.alt { background: var(--bg-alt); }
 .section-head p { color: var(--text-muted); font-size: 16px; max-width: 640px; margin: 0 auto; }
 
 /* VIDEO */
-.video-placeholder { background: var(--secondary); aspect-ratio: 16/9; border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; max-width: 800px; margin: 0 auto; cursor: pointer; transition: all 0.2s; }
-.video-placeholder:hover { background: var(--primary); }
-.play-icon { width: 80px; height: 80px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
-.play-icon::after { content: ""; border-left: 24px solid white; border-top: 16px solid transparent; border-bottom: 16px solid transparent; margin-left: 6px; }
+.video-frame { max-width: 340px; margin: 0 auto; border-radius: 28px; overflow: hidden; background: #0A2E2B; box-shadow: 0 12px 48px rgba(14,95,88,0.35); border: 6px solid #0A2E2B; }
+.video-frame video { width: 100%; aspect-ratio: 9/16; display: block; background: #0A2E2B; }
 .video-badges { display: flex; gap: 16px; justify-content: center; margin-top: 24px; flex-wrap: wrap; }
 .badge { background: white; border: 1px solid var(--border); padding: 8px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; color: var(--secondary); display: inline-flex; align-items: center; gap: 6px; }
 .badge::before { content: "✓"; color: var(--primary); font-weight: 900; }
@@ -294,10 +292,8 @@ footer ul li { padding: 4px 0; }
   .partner-data dt { margin-top: 8px; }
   .partner-data dt:first-child { margin-top: 0; }
 
-  /* Vídeo e play */
-  .video-placeholder { aspect-ratio: 4/3; }
-  .play-icon { width: 64px; height: 64px; margin-bottom: 12px; }
-  .play-icon::after { border-left-width: 20px; border-top-width: 13px; border-bottom-width: 13px; }
+  /* Vídeo */
+  .video-frame { max-width: 300px; }
 
   /* Footer: bottom em coluna */
   .footer-bottom { flex-direction: column; align-items: flex-start; font-size: 12px; }
@@ -371,12 +367,17 @@ footer ul li { padding: 4px 0; }
   <div class="container">
     <div class="section-head">
       <h2>Veja o agente trabalhando</h2>
-      <p>60 segundos. Sem voz-off. Conversa real em tempo real.</p>
+      <p>60 segundos. Sem voz-off. Demonstração real do agente, acelerada para caber aqui.</p>
     </div>
-    <a href="https://wa.me/552731914430" target="_blank" rel="noopener" class="video-placeholder">
-      <div class="play-icon"></div>
-      <div style="font-size: 14px; font-weight: 600; opacity: 0.85;">Em breve · Por enquanto, converse direto com o agente</div>
-    </a>
+    <div class="video-frame">
+      <video id="demo-video" controls playsinline preload="metadata" poster="video/capa_demo.jpg">
+        <source src="video/demo_agente.mp4" type="video/mp4">
+        Seu navegador não suporta vídeo HTML5. <a href="video/demo_agente.mp4">Baixe o vídeo</a>.
+      </video>
+    </div>
+    <p style="text-align:center; margin-top:20px;">
+      <a href="https://wa.me/552731914430" target="_blank" rel="noopener" class="btn btn-secondary">Prefere testar você mesmo? Fale com o agente →</a>
+    </p>
     <div class="video-badges">
       <span class="badge">LGPD compliant</span>
       <span class="badge">Integra Google Calendar</span>
@@ -688,6 +689,19 @@ document.querySelectorAll('a[href*="wa.me/"]').forEach(a => {
     }
   });
 });
+
+// Meta Pixel — evento custom no primeiro play do vídeo demo
+(function () {
+  var v = document.getElementById('demo-video');
+  if (!v) return;
+  var fired = false;
+  v.addEventListener('play', function () {
+    if (!fired && typeof fbq === 'function') {
+      fired = true;
+      fbq('trackCustom', 'VideoDemoPlay', { content_name: 'demo_agente_60s' });
+    }
+  });
+})();
 </script>
 
 </body>
