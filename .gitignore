@@ -1,0 +1,13 @@
+# Arquivos de autoria/fonte que NÃO devem ir para o site publicado (repo público).
+# Evita que um "git add -A" publique algo sem querer — inclusive material privado.
+README.md
+head_snippet.html
+email_autorizacao_jeanine.md
+_favicon_source_256.png
+facebook_cover_iatendo.png
+facebook_cover_iatendo.svg
+logo_espaco_energize.png.png
+
+# Lixo de sync do OneDrive / sistema
+desktop.ini
+*~RF*.tmp
