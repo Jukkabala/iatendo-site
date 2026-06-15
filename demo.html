@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Demonstração ao vivo — iAtendo</title>
+<meta name="description" content="Converse com o agente de agendamento da iAtendo e veja o produto funcionando — direto no navegador, sem instalar nada.">
+<meta name="theme-color" content="#1A8870">
+<meta name="robots" content="index,follow">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:title" content="Demonstração ao vivo — iAtendo">
+<meta property="og:description" content="Veja o agente de agendamento da iAtendo funcionando no seu navegador.">
+<meta property="og:image" content="/og-image.png">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --primary:#1A8870; --secondary:#0F4C5C; --text-body:#374151; --text-muted:#6B7280;
+    --chat-bg:#ECE5DD; --bubble-them:#FFFFFF; --bubble-me:#D7F5C9; --me-text:#0F3B2E;
+    --ok:#1A8870; --shadow:0 18px 50px rgba(15,76,92,.22);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;height:100%;}
+  body{
+    font-family:'Inter','Segoe UI',system-ui,-apple-system,sans-serif; color:var(--text-body);
+    background:linear-gradient(135deg,#0F4C5C 0%,#1A8870 100%); -webkit-font-smoothing:antialiased;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100dvh; padding:20px;
+  }
+  .topbar{width:100%; max-width:440px; display:flex; align-items:center; justify-content:space-between; margin-bottom:14px;}
+  .topbar a{color:#fff; text-decoration:none; font-weight:600; font-size:14px; opacity:.92; display:inline-flex; align-items:center; gap:6px;}
+  .topbar a:hover{opacity:1;}
+  .badge-demo{background:rgba(255,255,255,.15); color:#fff; font-size:12px; font-weight:700; padding:5px 11px; border-radius:999px; letter-spacing:.3px;}
+
+  .phone{
+    width:100%; max-width:440px; height:min(78dvh,720px); background:var(--chat-bg);
+    border-radius:22px; overflow:hidden; box-shadow:var(--shadow); display:flex; flex-direction:column; position:relative;
+  }
+  /* Header estilo WhatsApp */
+  .wa-head{
+    background:linear-gradient(90deg,var(--secondary),var(--primary)); color:#fff;
+    padding:12px 14px; display:flex; align-items:center; gap:12px; flex-shrink:0;
+  }
+  .wa-avatar{
+    width:42px; height:42px; border-radius:50%; background:#fff; color:var(--primary);
+    display:flex; align-items:center; justify-content:center; font-weight:800; font-size:18px; flex-shrink:0;
+  }
+  .wa-meta{flex:1; min-width:0;}
+  .wa-name{font-weight:700; font-size:15px; line-height:1.2;}
+  .wa-status{font-size:12px; opacity:.9; display:flex; align-items:center; gap:5px;}
+  .dot-online{width:7px; height:7px; border-radius:50%; background:#7CF29C; display:inline-block;}
+  .wa-restart{background:rgba(255,255,255,.16); border:none; color:#fff; width:34px; height:34px; border-radius:50%; cursor:pointer; font-size:16px; line-height:1; flex-shrink:0;}
+  .wa-restart:hover{background:rgba(255,255,255,.28);}
+
+  /* Área de mensagens */
+  .wa-chat{flex:1; overflow-y:auto; padding:16px 14px 6px; display:flex; flex-direction:column; gap:8px; scroll-behavior:smooth;}
+  .msg{max-width:82%; padding:8px 11px 6px; border-radius:12px; font-size:14.5px; line-height:1.42; position:relative; white-space:pre-line; word-wrap:break-word; box-shadow:0 1px 1px rgba(0,0,0,.06); animation:pop .18s ease-out;}
+  @keyframes pop{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:none;}}
+  .them{align-self:flex-start; background:var(--bubble-them); border-top-left-radius:3px;}
+  .me{align-self:flex-end; background:var(--bubble-me); color:var(--me-text); border-top-right-radius:3px;}
+  .msg .t{display:block; text-align:right; font-size:10.5px; color:var(--text-muted); margin-top:3px;}
+  .me .t{color:#5b8a6e;}
+  .sys{align-self:center; background:rgba(15,76,92,.08); color:var(--secondary); font-size:12px; padding:5px 12px; border-radius:999px; text-align:center; max-width:90%;}
+
+  /* indicador "digitando" */
+  .typing{align-self:flex-start; background:var(--bubble-them); padding:11px 14px; border-radius:12px; border-top-left-radius:3px; display:inline-flex; gap:4px; box-shadow:0 1px 1px rgba(0,0,0,.06);}
+  .typing span{width:7px; height:7px; border-radius:50%; background:#9aa6a1; display:inline-block; animation:blink 1.2s infinite;}
+  .typing span:nth-child(2){animation-delay:.2s;} .typing span:nth-child(3){animation-delay:.4s;}
+  @keyframes blink{0%,60%,100%{opacity:.3;} 30%{opacity:1;}}
+
+  /* Quick replies + input */
+  .wa-foot{flex-shrink:0; background:#F0F2F0; border-top:1px solid #e2e6e2; padding:9px 10px 10px;}
+  .chips{display:flex; flex-wrap:wrap; gap:7px; margin-bottom:8px;}
+  .chip{background:#fff; border:1.5px solid var(--primary); color:var(--primary); font-weight:600; font-size:13px; padding:7px 13px; border-radius:999px; cursor:pointer; transition:all .15s;}
+  .chip:hover{background:var(--primary); color:#fff;}
+  .chip:active{transform:scale(.96);}
+  .inputrow{display:flex; gap:8px; align-items:center;}
+  .inputrow input{flex:1; border:1px solid #d6dad6; border-radius:999px; padding:11px 15px; font-size:14.5px; font-family:inherit; outline:none; background:#fff;}
+  .inputrow input:focus{border-color:var(--primary);}
+  .send{background:var(--primary); border:none; color:#fff; width:44px; height:44px; border-radius:50%; cursor:pointer; font-size:18px; flex-shrink:0; display:flex; align-items:center; justify-content:center; transition:background .15s;}
+  .send:hover{background:var(--secondary);}
+  .send:disabled{opacity:.5; cursor:not-allowed;}
+
+  .cta-final{display:flex; flex-direction:column; gap:8px;}
+  .cta-final a{display:block; text-align:center; text-decoration:none; font-weight:700; font-size:14px; padding:11px; border-radius:10px;}
+  .cta-prim{background:var(--primary); color:#fff;} .cta-prim:hover{background:var(--secondary);}
+  .cta-sec{background:#fff; color:var(--primary); border:1.5px solid var(--primary);}
+
+  .hint{width:100%; max-width:440px; text-align:center; color:rgba(255,255,255,.85); font-size:12.5px; margin-top:14px; line-height:1.5;}
+  .hint a{color:#fff; font-weight:600;}
+</style>
+</head>
+<body>
+  <div class="topbar">
+    <a href="/" aria-label="Voltar para o site">← iatendo.com</a>
+    <span class="badge-demo">● Demonstração</span>
+  </div>
+
+  <div class="phone" id="iatendo-demo">
+    <div class="wa-head">
+      <div class="wa-avatar">iA</div>
+      <div class="wa-meta">
+        <div class="wa-name">iAtendo · Assistente de Agendamento</div>
+        <div class="wa-status"><span class="dot-online"></span> online agora</div>
+      </div>
+      <button class="wa-restart" id="btnRestart" title="Reiniciar" aria-label="Reiniciar demonstração">↻</button>
+    </div>
+
+    <div class="wa-chat" id="chat" aria-live="polite"></div>
+
+    <div class="wa-foot">
+      <div class="chips" id="chips"></div>
+      <div class="inputrow" id="inputrow">
+        <input id="txt" type="text" autocomplete="off" placeholder="Digite sua mensagem… (pode usar dados fictícios)" aria-label="Mensagem">
+        <button class="send" id="send" aria-label="Enviar">➤</button>
+      </div>
+    </div>
+  </div>
+
+  <p class="hint">Demonstração interativa do produto. <strong>Nenhum dado é coletado ou armazenado</strong> — tudo roda no seu navegador.<br>Quer ver na sua clínica? <a href="https://wa.me/5527988648027" target="_blank" rel="noopener">Fale com um especialista</a>.</p>
+
+<script>
+(function(){
+  "use strict";
+  const SERVICES = ['Cardiologia','Otorrinolaringologia','Pediatria','Ginecologia','Psicologia','Psiquiatria','Clínica geral'];
+  const WD = ['domingo','segunda-feira','terça-feira','quarta-feira','quinta-feira','sexta-feira','sábado'];
+  const chat = document.getElementById('chat');
+  const chipsBox = document.getElementById('chips');
+  const txt = document.getElementById('txt');
+  const sendBtn = document.getElementById('send');
+  const inputRow = document.getElementById('inputrow');
+
+  let state = 'start';
+  let data = {};
+  let slots = [];
+  let busy = false;
+
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+  const now = () => { const d=new Date(); return String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0'); };
+  const scroll = () => { chat.scrollTop = chat.scrollHeight; };
+
+  function bubble(text, who){
+    const div = document.createElement('div');
+    div.className = 'msg ' + (who === 'me' ? 'me' : 'them');
+    div.innerHTML = escapeHtml(text).replace(/\*(.+?)\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>') + '<span class="t">'+now()+'</span>';
+    chat.appendChild(div); scroll();
+  }
+  function sysMsg(text){
+    const div = document.createElement('div'); div.className='sys'; div.textContent=text;
+    chat.appendChild(div); scroll();
+  }
+  function escapeHtml(s){ return s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
+  async function typing(ms){
+    const t = document.createElement('div'); t.className='typing';
+    t.innerHTML='<span></span><span></span><span></span>';
+    chat.appendChild(t); scroll();
+    await sleep(ms);
+    t.remove();
+  }
+  async function botSay(text, ms){
+    await typing(ms || Math.min(1100, 350 + text.length*14));
+    bubble(text, 'them');
+  }
+
+  function setChips(list){
+    chipsBox.innerHTML='';
+    (list||[]).forEach(c=>{
+      const b=document.createElement('button'); b.className='chip'; b.type='button'; b.textContent=c.label;
+      b.onclick=()=>handle(c.value, c.label);
+      chipsBox.appendChild(b);
+    });
+  }
+  function lock(v){ busy=v; sendBtn.disabled=v; txt.disabled=v; if(!v){txt.focus();} }
+
+  function nextSlots(){
+    const out=[]; let d=new Date(); d.setHours(0,0,0,0);
+    const days=[];
+    while(days.length<2){ d=new Date(d.getTime()+86400000); const wd=d.getDay(); if(wd>=1&&wd<=5) days.push(new Date(d)); }
+    [[days[0],9],[days[0],14],[days[1],10]].forEach(([day,h])=>out.push({date:new Date(day),hour:h}));
+    return out;
+  }
+  function fmtSlot(s){
+    const dd=String(s.date.getDate()).padStart(2,'0'), mm=String(s.date.getMonth()+1).padStart(2,'0');
+    return WD[s.date.getDay()]+', '+dd+'/'+mm+' às '+String(s.hour).padStart(2,'0')+':00';
+  }
+
+  async function start(){
+    state='start'; data={}; slots=[]; chat.innerHTML=''; setChips([]); lock(true);
+    sysMsg('Hoje · demonstração');
+    await botSay('Olá! 👋 Sou o assistente virtual de agendamento da clínica. Posso marcar, remarcar ou cancelar a sua consulta aqui mesmo, na hora.', 700);
+    await botSay('Antes de começar, preciso do seu consentimento (LGPD): vou usar seu nome, e-mail e data de nascimento apenas para registrar e te contatar sobre o agendamento. Os dados ficam guardados por até 24 meses.\n\nVocê concorda? (digite o número)\n1 - Sim\n2 - Não', 900);
+    state='consent'; setChips([{label:'1 - Sim',value:'1'},{label:'2 - Não',value:'2'}]); lock(false);
+  }
+
+  async function handle(raw, label){
+    if(busy) return;
+    const v=(raw==null?'':String(raw)).trim();
+    if(!v) return;
+    bubble(label || v, 'me');
+    txt.value=''; setChips([]); lock(true);
+    try{ await route(v); }finally{ if(state!=='done') lock(false); }
+  }
+
+  const yes = v => /^(1|s|sim|claro|ok|pode|confirmo|isso|aceito)$/i.test(v);
+  const no  = v => /^(2|n|não|nao|no)$/i.test(v);
+
+  async function route(v){
+    switch(state){
+      case 'consent':
+        if(no(v)){
+          await botSay('Sem problemas! Sem o consentimento não posso seguir com o agendamento. Se mudar de ideia, é só voltar. 🙏', 700);
+          await endDemo(); return;
+        }
+        if(!yes(v)){ await botSay('Pode responder com 1 (Sim) ou 2 (Não)? 🙂',500);
+          setChips([{label:'1 - Sim',value:'1'},{label:'2 - Não',value:'2'}]); return; }
+        data.consent=true;
+        await botSay('Perfeito, obrigado! ✅ Para começar, qual é o seu *nome completo*?',700);
+        state='name'; return;
+
+      case 'name':
+        data.name=v.replace(/\*/g,'');
+        await botSay('Prazer, '+data.name.split(' ')[0]+'! Qual é o seu *e-mail*?',650);
+        state='email'; return;
+
+      case 'email':
+        if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){
+          await botSay('Hmm, esse e-mail parece incompleto. Pode conferir? (ex.: nome@email.com)',550); return;
+        }
+        data.email=v;
+        await botSay('Anotado! Qual especialidade você precisa? (digite o número)\n'+
+          SERVICES.map((s,i)=>(i+1)+' - '+s).join('\n'),900);
+        state='service';
+        setChips(SERVICES.map((s,i)=>({label:(i+1)+' - '+s, value:String(i+1)})));
+        return;
+
+      case 'service': {
+        let idx=-1;
+        if(/^[1-7]$/.test(v)) idx=parseInt(v,10)-1;
+        else idx=SERVICES.findIndex(s=>s.toLowerCase()===v.toLowerCase());
+        if(idx<0){ await botSay('Escolhe uma das opções pelo número, de 1 a 7? 🙂',500);
+          setChips(SERVICES.map((s,i)=>({label:(i+1)+' - '+s, value:String(i+1)}))); return; }
+        data.service=SERVICES[idx];
+        slots=nextSlots();
+        await botSay('Ótimo — *'+data.service+'*. Deixa eu ver a agenda…',700);
+        await botSay('Tenho estes horários disponíveis (atendemos seg–sex, em dias úteis). Qual prefere? (digite o número)\n'+
+          slots.map((s,i)=>(i+1)+' - '+fmtSlot(s)).join('\n'),1000);
+        state='slot';
+        setChips(slots.map((s,i)=>({label:(i+1)+' - '+fmtSlot(s).split(',')[0]+' '+String(s.hour).padStart(2,'0')+'h', value:String(i+1)})));
+        return;
+      }
+
+      case 'slot': {
+        if(!/^[1-3]$/.test(v)){ await botSay('Pode escolher 1, 2 ou 3? 🙂',450);
+          setChips(slots.map((s,i)=>({label:(i+1)+' - '+fmtSlot(s).split(',')[0]+' '+String(s.hour).padStart(2,'0')+'h', value:String(i+1)}))); return; }
+        data.slot=slots[parseInt(v,10)-1];
+        await botSay('Verificando disponibilidade…',1300);
+        await botSay('✅ Esse horário está livre! Confere o resumo:\n\n• *Nome:* '+data.name+'\n• *E-mail:* '+data.email+'\n• *Serviço:* '+data.service+'\n• *Data:* '+fmtSlot(data.slot)+'\n\nConfirma o agendamento? (digite o número)\n1 - Sim, confirmar\n2 - Não, escolher outro horário',1100);
+        state='confirm';
+        setChips([{label:'1 - Confirmar',value:'1'},{label:'2 - Outro horário',value:'2'}]);
+        return;
+      }
+
+      case 'confirm':
+        if(no(v)){
+          await botSay('Sem problema! Qual destes prefere? (digite o número)\n'+slots.map((s,i)=>(i+1)+' - '+fmtSlot(s)).join('\n'),800);
+          state='slot';
+          setChips(slots.map((s,i)=>({label:(i+1)+' - '+fmtSlot(s).split(',')[0]+' '+String(s.hour).padStart(2,'0')+'h', value:String(i+1)})));
+          return;
+        }
+        if(!yes(v)){ await botSay('Responde com 1 (confirmar) ou 2 (outro horário)? 🙂',450);
+          setChips([{label:'1 - Confirmar',value:'1'},{label:'2 - Outro horário',value:'2'}]); return; }
+        await botSay('Pronto! 🎉',650);
+        await botSay('*Sua consulta está confirmada ✅*\n\n• *Nome:* '+data.name+'\n• *Serviço:* '+data.service+'\n• *Data:* '+fmtSlot(data.slot)+'\n\nNa clínica, neste momento eu já teria criado o evento no Google Calendar e enviado a confirmação por WhatsApp e e-mail — e ainda mando lembretes automáticos antes da consulta. 😉',1200);
+        await endDemo(true); return;
+    }
+  }
+
+  async function endDemo(success){
+    state='done'; setChips([]);
+    inputRow.style.display='none';
+    const wrap=document.createElement('div'); wrap.className='cta-final';
+    if(success) sysMsg('Fim da demonstração — nenhum dado foi salvo.');
+    const a1=document.createElement('a'); a1.className='cta-prim'; a1.href='https://wa.me/5527988648027'; a1.target='_blank'; a1.rel='noopener';
+    a1.textContent='Quero isso na minha clínica → falar com especialista';
+    const a2=document.createElement('a'); a2.className='cta-sec'; a2.href='#'; a2.textContent='↻ Reiniciar demonstração';
+    a2.onclick=(e)=>{e.preventDefault(); inputRow.style.display='flex'; start();};
+    wrap.appendChild(a1); wrap.appendChild(a2); chipsBox.appendChild(wrap);
+  }
+
+  // Eventos
+  sendBtn.onclick=()=>handle(txt.value);
+  txt.addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); handle(txt.value); }});
+  document.getElementById('btnRestart').onclick=()=>{ inputRow.style.display='flex'; start(); };
+
+  start();
+})();
+</script>
+</body>
+</html>
