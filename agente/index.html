@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Agente de IA no WhatsApp que atende seu cliente 24/7, marca consulta direto no Google Calendar e confirma por e-mail. R$ 349/mês, setup grátis, sem fidelidade.">
+<title>IAtendo — A secretária IA que não dorme</title>
+<link rel="canonical" href="https://iatendo.com/agente/">
+
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-title" content="IAtendo">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#1A8870">
+<meta name="msapplication-config" content="/browserconfig.xml">
+<meta name="msapplication-TileColor" content="#1A8870">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="IAtendo">
+<meta property="og:title" content="IAtendo — A secretária IA que não dorme">
+<meta property="og:description" content="Agente de IA no WhatsApp que atende seu cliente 24/7 e marca direto no Google Calendar. R$ 349/mês, setup grátis.">
+<meta property="og:url" content="https://iatendo.com/agente/">
+<meta property="og:image" content="https://iatendo.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="pt_BR">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="IAtendo — A secretária IA que não dorme">
+<meta name="twitter:description" content="Agente de IA no WhatsApp que atende seu cliente 24/7. R$ 349/mês, setup grátis.">
+<meta name="twitter:image" content="https://iatendo.com/og-image.png">
+
+<!-- Verificação de domínio Meta Business -->
+<meta name="facebook-domain-verification" content="4vf871rpp75ot8umdkaw6x6e34bomy" />
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"IAtendo","applicationCategory":"BusinessApplication","operatingSystem":"Web, WhatsApp","description":"Agente de IA no WhatsApp que atende e agenda consultas para clínicas 24/7.","url":"https://iatendo.com","offers":{"@type":"Offer","price":"349.00","priceCurrency":"BRL"},"provider":{"@type":"Organization","name":"Juliano Almeida Assessoria e Consultoria Empresarial","email":"contato@iatendo.com"}}
+</script>
+
+<!-- Meta Pixel (substituir 1695732014960269 pelo ID real obtido em business.facebook.com → Eventos) -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1695732014960269');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1695732014960269&ev=PageView&noscript=1"/></noscript>
+<!-- /Meta Pixel -->
+
+<!-- Fonte Inter via Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --primary: #1A8870;
+  --primary-dark: #0F6B58;
+  --secondary: #0F4C5C;
+  --text: #111827;
+  --text-body: #374151;
+  --text-muted: #6B7280;
+  --bg: #FFFFFF;
+  --bg-alt: #F8F9FA;
+  --bg-soft: #F0F9F7;
+  --border: #E5E7EB;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif; color: var(--text-body); line-height: 1.6; background: var(--bg); -webkit-font-smoothing: antialiased; overflow-x: hidden; word-wrap: break-word; overflow-wrap: break-word; }
+.container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+img, svg { max-width: 100%; height: auto; display: block; }
+
+h1, h2, h3 { color: var(--secondary); font-weight: 800; letter-spacing: -0.5px; line-height: 1.2; }
+h1 { font-size: 36px; }
+h2 { font-size: 28px; margin-bottom: 16px; }
+h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+p { margin-bottom: 12px; }
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
+strong { color: var(--secondary); font-weight: 700; }
+
+/* HEADER */
+header { position: sticky; top: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); z-index: 100; }
+header .container { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; }
+.brand { display: flex; align-items: center; gap: 10px; }
+.brand-mark { width: 36px; height: 36px; border-radius: 50%; background: var(--primary); display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 14px; }
+.brand-text { font-size: 22px; font-weight: 800; letter-spacing: -1px; }
+.brand-text .ia { color: var(--primary); }
+.brand-text .tendo { color: var(--secondary); }
+.nav-links { display: none; gap: 24px; align-items: center; }
+.nav-links a { font-size: 15px; font-weight: 600; color: var(--text-body); }
+.nav-links a.active { color: var(--primary); }
+.nav-links a:hover { color: var(--primary); text-decoration: none; }
+.btn { display: inline-block; padding: 12px 22px; border-radius: 8px; font-weight: 700; font-size: 15px; transition: all 0.2s; text-decoration: none !important; cursor: pointer; border: none; }
+.btn-primary { background: var(--primary); color: white !important; }
+.btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(26,136,112,0.3); }
+.btn-secondary { background: transparent; color: var(--primary) !important; border: 2px solid var(--primary); }
+.btn-secondary:hover { background: var(--primary); color: white !important; }
+.btn-large { padding: 16px 32px; font-size: 17px; }
+
+/* HERO */
+.hero { padding: 64px 0 80px; background: linear-gradient(180deg, #FFFFFF 0%, var(--bg-alt) 100%); }
+.hero-grid { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; }
+.hero h1 { font-size: 44px; margin-bottom: 20px; }
+.hero h1 .accent { color: var(--primary); }
+.hero .lead { font-size: 18px; color: var(--text-body); margin-bottom: 28px; max-width: 540px; }
+.hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 28px; }
+.hero .pilot-badge { display: inline-flex; align-items: center; gap: 10px; background: var(--bg-soft); border-left: 3px solid var(--primary); padding: 12px 18px; border-radius: 0 6px 6px 0; font-size: 14px; color: var(--text-body); max-width: 460px; }
+.hero .pilot-badge::before { content: "●"; color: var(--primary); animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+/* HERO MOCKUP */
+.hero-mockup { background: var(--secondary); border-radius: 24px; padding: 16px; box-shadow: 0 20px 60px rgba(15,76,92,0.25); max-width: 380px; margin: 0 auto; }
+.chat { background: #ECE5DD; border-radius: 18px; padding: 16px; min-height: 360px; display: flex; flex-direction: column; gap: 8px; }
+.msg { padding: 10px 14px; border-radius: 12px; max-width: 80%; font-size: 14px; line-height: 1.4; box-shadow: 0 1px 1px rgba(0,0,0,0.08); }
+.msg-them { background: #FFFFFF; align-self: flex-start; border-bottom-left-radius: 2px; color: var(--text); }
+.msg-us { background: #DCF8C6; align-self: flex-end; border-bottom-right-radius: 2px; color: var(--text); }
+.msg .time { display: block; font-size: 10px; color: var(--text-muted); text-align: right; margin-top: 4px; }
+
+/* SECTION GENERIC */
+section { padding: 72px 0; }
+section.alt { background: var(--bg-alt); }
+.section-head { text-align: center; margin-bottom: 48px; }
+.section-head h2 { margin-bottom: 12px; }
+.section-head p { color: var(--text-muted); font-size: 16px; max-width: 640px; margin: 0 auto; }
+
+/* VIDEO */
+.video-frame { max-width: 340px; margin: 0 auto; border-radius: 28px; overflow: hidden; background: #0A2E2B; box-shadow: 0 12px 48px rgba(14,95,88,0.35); border: 6px solid #0A2E2B; }
+.video-frame video { width: 100%; aspect-ratio: 9/16; display: block; background: #0A2E2B; }
+.video-badges { display: flex; gap: 16px; justify-content: center; margin-top: 24px; flex-wrap: wrap; }
+.badge { background: white; border: 1px solid var(--border); padding: 8px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; color: var(--secondary); display: inline-flex; align-items: center; gap: 6px; }
+.badge::before { content: "✓"; color: var(--primary); font-weight: 900; }
+
+/* COMPARATIVO */
+.compare-table { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 16px rgba(0,0,0,0.06); max-width: 900px; margin: 0 auto; }
+.compare-table table { width: 100%; border-collapse: collapse; }
+.compare-table th, .compare-table td { padding: 16px 20px; text-align: left; font-size: 15px; }
+.compare-table th { background: var(--secondary); color: white; font-weight: 700; }
+.compare-table td { border-bottom: 1px solid var(--border); }
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table .yes { color: var(--primary); font-weight: 700; }
+.compare-table .no { color: var(--text-muted); }
+
+/* DOR — 3 colunas */
+.cols-3 { display: grid; grid-template-columns: 1fr; gap: 24px; }
+.col-card { background: white; padding: 28px; border-radius: 12px; border: 1px solid var(--border); }
+.col-card .num { display: inline-block; background: var(--bg-soft); color: var(--primary); width: 36px; height: 36px; border-radius: 50%; line-height: 36px; text-align: center; font-weight: 800; margin-bottom: 14px; }
+.col-card h3 { font-size: 17px; margin-bottom: 8px; }
+.col-card p { font-size: 14px; color: var(--text-body); }
+
+/* COMO FUNCIONA */
+.steps { display: grid; grid-template-columns: 1fr; gap: 24px; max-width: 720px; margin: 0 auto; }
+.step { display: flex; gap: 20px; align-items: flex-start; padding: 24px; background: white; border-radius: 12px; border: 1px solid var(--border); }
+.step-num { flex-shrink: 0; width: 44px; height: 44px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 18px; }
+.step-content h3 { margin-bottom: 6px; }
+.step-content p { font-size: 14px; margin: 0; }
+
+/* ESCOPO */
+.escopo-grid { display: grid; grid-template-columns: 1fr; gap: 16px; max-width: 800px; margin: 0 auto; }
+.escopo-col { background: white; padding: 24px 28px; border-radius: 12px; }
+.escopo-col.yes { border-left: 4px solid var(--primary); }
+.escopo-col.no { border-left: 4px solid #C0392B; }
+.escopo-col h3 { font-size: 16px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+.escopo-col.yes h3::before { content: "✓"; color: var(--primary); font-weight: 900; font-size: 20px; }
+.escopo-col.no h3::before { content: "✗"; color: #C0392B; font-weight: 900; font-size: 20px; }
+.escopo-col ul { list-style: none; padding: 0; }
+.escopo-col li { padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+.escopo-col li:last-child { border-bottom: none; }
+
+/* PLANOS */
+.plans { display: grid; grid-template-columns: 1fr; gap: 24px; max-width: 1000px; margin: 0 auto; }
+.plan-card { background: white; padding: 32px 28px; border-radius: 16px; border: 1px solid var(--border); position: relative; }
+.plan-card.highlight { border: 2px solid var(--primary); transform: scale(1.02); box-shadow: 0 8px 32px rgba(26,136,112,0.15); }
+.plan-card.highlight::before { content: "MAIS POPULAR"; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; padding: 5px 14px; border-radius: 20px; font-size: 11px; font-weight: 800; letter-spacing: 1px; }
+.plan-name { font-size: 14px; font-weight: 700; color: var(--text-muted); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 10px; }
+.plan-price { font-size: 36px; font-weight: 800; color: var(--secondary); margin-bottom: 4px; line-height: 1; }
+.plan-price .currency { font-size: 22px; vertical-align: super; margin-right: 2px; }
+.plan-period { font-size: 14px; color: var(--text-muted); margin-bottom: 8px; }
+.plan-equiv { font-size: 12px; color: var(--primary); font-weight: 600; margin-bottom: 20px; }
+.plan-feat { list-style: none; padding: 0; margin: 16px 0; }
+.plan-feat li { padding: 8px 0; font-size: 14px; border-bottom: 1px solid var(--border); }
+.plan-feat li:last-child { border-bottom: none; }
+.plan-feat li::before { content: "✓"; color: var(--primary); font-weight: 900; margin-right: 8px; }
+
+/* FAQ */
+.faq { max-width: 760px; margin: 0 auto; }
+.faq-item { background: white; border-radius: 8px; margin-bottom: 12px; border: 1px solid var(--border); overflow: hidden; }
+.faq-q { padding: 18px 24px; font-weight: 700; color: var(--secondary); cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-size: 16px; user-select: none; }
+.faq-q::after { content: "+"; font-size: 22px; color: var(--primary); transition: transform 0.2s; }
+.faq-item.open .faq-q::after { transform: rotate(45deg); }
+.faq-a { padding: 0 24px; max-height: 0; overflow: hidden; transition: all 0.3s ease; font-size: 14px; color: var(--text-body); }
+.faq-item.open .faq-a { padding: 0 24px 20px; max-height: 400px; }
+
+/* CTA FINAL */
+.cta-final { background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%); color: white; text-align: center; padding: 80px 0; }
+.cta-final h2 { color: white; font-size: 36px; margin-bottom: 16px; }
+.cta-final p { color: rgba(255,255,255,0.9); font-size: 17px; margin-bottom: 32px; }
+.cta-final .btn-primary { background: white; color: var(--primary) !important; padding: 18px 36px; font-size: 17px; }
+.cta-final .btn-primary:hover { background: var(--bg-soft); }
+
+/* FOOTER */
+footer { background: var(--secondary); color: rgba(255,255,255,0.7); padding: 48px 0 24px; font-size: 13px; }
+footer a { color: rgba(255,255,255,0.9); }
+.footer-grid { display: grid; grid-template-columns: 1fr; gap: 32px; margin-bottom: 32px; }
+footer h4 { color: white; font-size: 14px; font-weight: 700; margin-bottom: 12px; letter-spacing: 0.5px; text-transform: uppercase; }
+footer ul { list-style: none; padding: 0; }
+footer ul li { padding: 4px 0; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.15); padding-top: 20px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+/* FLOATING WHATSAPP CTA (mobile-first) */
+.fab-whatsapp { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: white; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(37,211,102,0.4); z-index: 99; transition: transform 0.2s; }
+.fab-whatsapp:hover { transform: scale(1.1); text-decoration: none !important; }
+.fab-whatsapp svg { width: 32px; height: 32px; fill: white; }
+
+/* PARCEIRA — clínica em produção */
+.partner-section { background: var(--bg-soft); }
+.partner-card { background: white; border-radius: 16px; padding: 32px; display: grid; grid-template-columns: 1fr; gap: 28px; align-items: center; max-width: 880px; margin: 0 auto; box-shadow: 0 4px 24px rgba(15,76,92,0.08); }
+.partner-logo-box { background: #FAFAFA; border: 1px dashed var(--border); border-radius: 12px; padding: 32px 20px; text-align: center; min-height: 160px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 6px; }
+.partner-logo-box img { max-width: 100%; max-height: 140px; height: auto; }
+.partner-logo-box .placeholder-name { font-size: 22px; font-weight: 800; color: var(--primary); letter-spacing: -0.5px; line-height: 1.1; }
+.partner-logo-box .placeholder-sub { font-size: 10px; font-weight: 600; color: var(--text-muted); letter-spacing: 3px; }
+.partner-data h3 { font-size: 20px; margin-bottom: 4px; color: var(--secondary); }
+.partner-data .specialty { font-size: 13px; color: var(--text-muted); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 18px; }
+.partner-data dl { display: grid; grid-template-columns: max-content 1fr; gap: 10px 16px; font-size: 14px; margin-top: 4px; }
+.partner-data dt { font-weight: 700; color: var(--secondary); }
+.partner-data dd { color: var(--text-body); margin: 0; }
+.partner-data dd a { color: var(--primary); }
+.partner-status { display: inline-flex; align-items: center; gap: 8px; background: var(--primary); color: white; padding: 6px 14px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-top: 20px; }
+.partner-status::before { content: "●"; animation: pulse 2s infinite; }
+
+/* RESPONSIVE — mobile (override para telas <768px) */
+@media (max-width: 767px) {
+  /* Tipografia mais compacta */
+  h1 { font-size: 28px; }
+  h2 { font-size: 24px; }
+  h3 { font-size: 17px; }
+  .hero h1 { font-size: 30px; line-height: 1.25; }
+  .hero .lead { font-size: 16px; }
+  .cta-final h2 { font-size: 26px; }
+  .cta-final p { font-size: 15px; }
+
+  /* Container e seções mais apertados */
+  .container { padding: 0 16px; }
+  section { padding: 48px 0; }
+  .hero { padding: 36px 0 56px; }
+  .cta-final { padding: 56px 0; }
+  .section-head { margin-bottom: 32px; }
+  header .container { padding: 12px 16px; }
+
+  /* Header: brand menor, botão compacto */
+  .brand-text { font-size: 19px; }
+  header .btn { padding: 9px 14px; font-size: 13px; }
+
+  /* Hero CTAs full-width empilhados */
+  .hero-ctas { flex-direction: column; gap: 10px; }
+  .hero-ctas .btn { width: 100%; text-align: center; }
+  .btn-large { padding: 14px 22px; font-size: 15px; }
+  .hero .pilot-badge { font-size: 13px; padding: 10px 14px; max-width: 100%; }
+
+  /* Hero mockup um pouco menor */
+  .hero-mockup { padding: 12px; max-width: 320px; }
+  .chat { min-height: 320px; padding: 12px; }
+  .msg { font-size: 13px; padding: 9px 12px; }
+
+  /* Tabela comparativa com scroll horizontal */
+  .compare-table { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .compare-table table { min-width: 540px; }
+  .compare-table th, .compare-table td { padding: 12px 14px; font-size: 14px; }
+
+  /* Steps e cards mais compactos */
+  .step { padding: 18px; gap: 14px; }
+  .step-num { width: 36px; height: 36px; font-size: 15px; }
+  .col-card { padding: 22px; }
+  .escopo-col { padding: 18px 20px; }
+
+  /* Planos — sem escala (evita overflow) e padding menor */
+  .plan-card { padding: 24px 20px; }
+  .plan-card.highlight { transform: none; }
+  .plan-price { font-size: 32px; }
+  .plan-price .currency { font-size: 18px; }
+
+  /* Partner card: dl em stack */
+  .partner-card { padding: 24px; gap: 20px; }
+  .partner-logo-box { min-height: 120px; padding: 22px 16px; }
+  .partner-logo-box img { max-height: 100px; }
+  .partner-data h3 { font-size: 18px; }
+  .partner-data dl { grid-template-columns: 1fr; gap: 4px 0; }
+  .partner-data dt { margin-top: 8px; }
+  .partner-data dt:first-child { margin-top: 0; }
+
+  /* Vídeo */
+  .video-frame { max-width: 300px; }
+
+  /* Footer: bottom em coluna */
+  .footer-bottom { flex-direction: column; align-items: flex-start; font-size: 12px; }
+
+  /* FAQ */
+  .faq-q { padding: 16px 18px; font-size: 15px; }
+  .faq-item.open .faq-a { padding: 0 18px 18px; }
+
+  /* FAB WhatsApp não tampa botão final em telas pequenas */
+  .fab-whatsapp { width: 52px; height: 52px; bottom: 16px; right: 16px; }
+  .fab-whatsapp svg { width: 28px; height: 28px; }
+}
+
+/* RESPONSIVE — desktop */
+@media (min-width: 768px) {
+  .nav-links { display: flex; }
+  h1 { font-size: 44px; }
+  h2 { font-size: 34px; }
+  .hero h1 { font-size: 56px; }
+  .hero-grid { grid-template-columns: 1.2fr 1fr; gap: 64px; }
+  .cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .escopo-grid { grid-template-columns: 1fr 1fr; }
+  .plans { grid-template-columns: repeat(3, 1fr); align-items: start; }
+  .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; }
+  .partner-card { grid-template-columns: 1fr 1.4fr; padding: 48px; gap: 40px; }
+  section { padding: 96px 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- ====== HEADER ====== -->
+<header>
+  <div class="container">
+    <a href="/" class="brand">
+      <div class="brand-mark">IA</div>
+      <div class="brand-text"><span class="ia">IA</span><span class="tendo">tendo</span></div>
+    </a>
+    <nav class="nav-links">
+      <a href="/agente/" class="active">Agente de agendamento</a>
+      <a href="/crm/">IAtendo CRM</a>
+    </nav>
+    <a href="/demo.html" target="_blank" rel="noopener" class="btn btn-primary">Falar com o agente →</a>
+  </div>
+</header>
+
+<!-- ====== HERO ====== -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <h1>O agendamento que <span class="accent">responde em 30 segundos</span>, todo dia, inclusive 22h de domingo.</h1>
+      <p class="lead">Agente de IA no WhatsApp da sua clínica que agenda, confirma, remarca e cancela consultas. Integra com Google Calendar. Em produção desde maio de 2026.</p>
+      <div class="hero-ctas">
+        <a href="/demo.html" target="_blank" rel="noopener" class="btn btn-primary btn-large">Falar com o agente agora →</a>
+        <a href="#video" class="btn btn-secondary btn-large">Ver em 60 segundos</a>
+      </div>
+      <div class="pilot-badge">
+        Em produção no <strong>Espaço Energize · Dra. Jeanine Viana</strong> · Serra/ES — desde maio/2026.
+      </div>
+    </div>
+    <div class="hero-mockup">
+      <div class="chat">
+        <div class="msg msg-them">Oi, quero marcar uma consulta de psicologia<span class="time">22:47</span></div>
+        <div class="msg msg-us">Oi! Posso te ajudar com isso agora. Pra começar, qual é o seu nome completo?<span class="time">22:47</span></div>
+        <div class="msg msg-them">Maria Silva<span class="time">22:48</span></div>
+        <div class="msg msg-us">Prazer, Maria. Tenho disponibilidade quinta às 14h ou sexta às 10h. Qual fica melhor?<span class="time">22:48</span></div>
+        <div class="msg msg-them">Quinta 14h<span class="time">22:49</span></div>
+        <div class="msg msg-us">Marcado! Te mando confirmação por e-mail e um lembrete 24h antes. ✓<span class="time">22:49</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== VÍDEO ====== -->
+<section id="video" class="alt">
+  <div class="container">
+    <div class="section-head">
+      <h2>Veja o agente trabalhando</h2>
+      <p>60 segundos. Sem voz-off. Demonstração real do agente, acelerada para caber aqui.</p>
+    </div>
+    <div class="video-frame">
+      <video id="demo-video" controls playsinline preload="metadata" poster="/video/capa_demo.jpg">
+        <source src="/video/demo_agente.mp4" type="video/mp4">
+        Seu navegador não suporta vídeo HTML5. <a href="/video/demo_agente.mp4">Baixe o vídeo</a>.
+      </video>
+    </div>
+    <p style="text-align:center; margin-top:20px;">
+      <a href="/demo.html" target="_blank" rel="noopener" class="btn btn-secondary">Prefere testar você mesmo? Fale com o agente →</a>
+    </p>
+    <div class="video-badges">
+      <span class="badge">LGPD compliant</span>
+      <span class="badge">Integra Google Calendar</span>
+      <span class="badge">WhatsApp oficial Meta</span>
+    </div>
+  </div>
+</section>
+
+<!-- ====== CLÍNICA PARCEIRA EM PRODUÇÃO ====== -->
+<section class="partner-section" id="parceira">
+  <div class="container">
+    <div class="section-head">
+      <h2>Clínica em produção</h2>
+      <p>Quem já está no ar com IAtendo no atendimento ao cliente.</p>
+    </div>
+    <div class="partner-card">
+      <div class="partner-logo-box">
+        <img src="/logo_espaco_energize.png" alt="Espaço Energize — Terapias Integradas">
+      </div>
+      <div class="partner-data">
+        <h3>Espaço Energize</h3>
+        <div class="specialty">Terapias Integradas</div>
+        <dl>
+          <dt>Responsável</dt><dd>Dra. Jeanine Viana</dd>
+          <dt>Endereço</dt><dd>Rua da Aldeia, 76 — Laranjeiras, Serra/ES</dd>
+          <dt>WhatsApp</dt><dd><a href="https://wa.me/5527992838774" target="_blank" rel="noopener">+55 27 99283-8774</a></dd>
+        </dl>
+        <div class="partner-status">Em produção desde maio/2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== DIFERENCIAIS ====== -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <h2>O que a gente faz diferente do mercado</h2>
+      <p>Pesquisa competitiva com 12 concorrentes diretos. 5 diferenças que pesam na decisão.</p>
+    </div>
+    <div class="compare-table">
+      <table>
+        <thead>
+          <tr><th>Critério</th><th>Aqui</th><th>Mercado típico</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Preço publicado no site</td><td class="yes">Sim — R$ 349/mês</td><td class="no">"Sob consulta"</td></tr>
+          <tr><td>Setup</td><td class="yes">R$ 0</td><td class="no">R$ 700+ em vários</td></tr>
+          <tr><td>Demo viva no WhatsApp</td><td class="yes">Agora, em 2 min</td><td class="no">Após reunião comercial</td></tr>
+          <tr><td>Integração Google Calendar nativa</td><td class="yes">Sim, qualquer especialidade</td><td class="no">Só com ERPs específicos</td></tr>
+          <tr><td>Cancelamento</td><td class="yes">A qualquer momento (Mensal)</td><td class="no">Fidelidade 12 meses</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ====== DOR ====== -->
+<section class="alt">
+  <div class="container">
+    <div class="section-head">
+      <h2>Onde sua clínica está perdendo dinheiro hoje</h2>
+      <p>Três pontos de fuga típicos numa clínica de 1 a 3 profissionais.</p>
+    </div>
+    <div class="cols-3">
+      <div class="col-card">
+        <div class="num">1</div>
+        <h3>Mensagem sem resposta</h3>
+        <p>Cliente manda às 19h, recepção volta às 8h. Ele já marcou em outro lugar.</p>
+      </div>
+      <div class="col-card">
+        <div class="num">2</div>
+        <h3>Recepção sobrecarregada</h3>
+        <p>60% do tempo da recepcionista vai em WhatsApp. Atendimento presencial sofre.</p>
+      </div>
+      <div class="col-card">
+        <div class="num">3</div>
+        <h3>Agenda dupla</h3>
+        <p>Marcar manualmente em planilha + Calendar gera conflito. Cliente chega e não tem ninguém.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== COMO FUNCIONA ====== -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <h2>Em produção em 7 dias</h2>
+      <p>Setup é a gente que faz. Você só responde os casos que o agente escalar.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>A gente conecta seu WhatsApp Business ao agente</h3>
+          <p>1 dia útil. Você precisa de uma linha dedicada — indicamos parceiro a ~R$ 17/mês.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3>A gente cadastra sua agenda, especialidades e horários</h3>
+          <p>1-2 dias úteis. Integração nativa com Google Calendar e Gmail.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>Vai pro ar</h3>
+          <p>Você só responde os casos que o agente escalar — raros. Taxa de fallback fica abaixo de 15%.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== ESCOPO (faz / não faz) ====== -->
+<section class="alt">
+  <div class="container">
+    <div class="section-head">
+      <h2>O que o agente faz e o que não faz</h2>
+      <p>Transparência total. Não promete o que não entrega.</p>
+    </div>
+    <div class="escopo-grid">
+      <div class="escopo-col yes">
+        <h3>Faz</h3>
+        <ul>
+          <li>Agenda nova consulta</li>
+          <li>Remarcação e cancelamento</li>
+          <li>Confirmação 24h antes (lembrete)</li>
+          <li>Coleta consentimento LGPD</li>
+          <li>Integra Google Calendar + Gmail</li>
+        </ul>
+      </div>
+      <div class="escopo-col no">
+        <h3>Não faz</h3>
+        <ul>
+          <li>Diagnóstico médico</li>
+          <li>Receita de medicamento</li>
+          <li>Atendimento clínico</li>
+          <li>Cobrança financeira (próxima feature)</li>
+          <li>Substituir o médico — só a recepção</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== PLANOS ====== -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <h2>Preço transparente. Sem reunião comercial para descobrir quanto custa.</h2>
+      <p>3 planos. Setup grátis em todos. Cancele quando quiser no Mensal.</p>
+    </div>
+    <div class="plans">
+      <div class="plan-card">
+        <div class="plan-name">Mensal</div>
+        <div class="plan-price"><span class="currency">R$</span>349</div>
+        <div class="plan-period">/mês</div>
+        <ul class="plan-feat">
+          <li>Até 500 conversas/mês</li>
+          <li>1-2 profissionais</li>
+          <li>Setup R$ 0</li>
+          <li>Suporte por e-mail (48h)</li>
+          <li>Cancelamento a qualquer momento</li>
+        </ul>
+        <a href="https://wa.me/5527988648027" target="_blank" rel="noopener" class="btn btn-secondary" style="width: 100%; text-align: center;">Fale conosco</a>
+      </div>
+      <div class="plan-card highlight">
+        <div class="plan-name">Anual</div>
+        <div class="plan-price"><span class="currency">R$</span>3.490</div>
+        <div class="plan-period">/ano</div>
+        <div class="plan-equiv">~R$ 290/mês — economia de R$ 698/ano (17%)</div>
+        <ul class="plan-feat">
+          <li>Até 500 conversas/mês</li>
+          <li>1-2 profissionais</li>
+          <li>Setup R$ 0</li>
+          <li>Suporte e-mail + WhatsApp prioritário</li>
+          <li>Cancelamento com 30 dias de aviso</li>
+        </ul>
+        <a href="https://wa.me/5527988648027" target="_blank" rel="noopener" class="btn btn-primary" style="width: 100%; text-align: center;">Fale conosco</a>
+      </div>
+      <div class="plan-card">
+        <div class="plan-name">Pro</div>
+        <div class="plan-price"><span class="currency">R$</span>499</div>
+        <div class="plan-period">/mês &nbsp;ou&nbsp; R$ 4.990/ano</div>
+        <ul class="plan-feat">
+          <li>Até 1.500 conversas/mês</li>
+          <li>3+ profissionais</li>
+          <li>Setup R$ 0</li>
+          <li>WhatsApp prioritário + revisão trimestral de prompt</li>
+          <li>Relatório mensal de uso</li>
+        </ul>
+        <a href="https://wa.me/5527988648027" target="_blank" rel="noopener" class="btn btn-secondary" style="width: 100%; text-align: center;">Fale conosco</a>
+      </div>
+    </div>
+    <p style="text-align: center; margin-top: 32px; color: var(--text-muted); font-size: 14px;">Acima de 1.500 conversas/mês ou 6+ profissionais? <a href="https://wa.me/5527988648027" target="_blank" rel="noopener">Fale com a gente</a> — contamos o cálculo na hora.</p>
+  </div>
+</section>
+
+<!-- ====== FAQ ====== -->
+<section class="alt">
+  <div class="container">
+    <div class="section-head">
+      <h2>Perguntas frequentes</h2>
+    </div>
+    <div class="faq">
+      <div class="faq-item">
+        <div class="faq-q">Funciona no meu WhatsApp atual?</div>
+        <div class="faq-a"><p>Não. O WhatsApp Business Cloud da Meta exige linha dedicada. Indicamos parceiro a R$ 17/mês — o setup dessa linha entra no nosso processo dos 7 dias.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">E a LGPD?</div>
+        <div class="faq-a"><p>Consentimento explícito antes de qualquer coleta de dado. Retenção de 24 meses. Política de privacidade publicada e auditável. Tratamos como controlador conforme art. 5º VI da LGPD.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Integra com meu sistema (Doctoralia, iClinic, Feegow)?</div>
+        <div class="faq-a"><p>Hoje integra com Google Calendar e Gmail — universais, funcionam para qualquer especialidade. Integração com sistemas específicos: roadmap (sob demanda no plano Pro).</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Por que o preço é menor que o mercado?</div>
+        <div class="faq-a"><p>Não é menor — é igual ou um pouco abaixo do meio do mercado direto. O que é diferente é que a gente publica. Setup grátis está dentro do plano, sem taxa escondida.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Quanto tempo até estar no ar?</div>
+        <div class="faq-a"><p>7 dias úteis a partir do contrato assinado. Setup é a gente que faz — você só fornece a agenda, especialidades e tom de voz.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Posso testar antes de contratar?</div>
+        <div class="faq-a"><p>Pode! Clique em <a href="/demo.html">Testar o agente</a> e converse com a versão demo aqui no site agora — sem instalar nada. Em 2 minutos você vê o produto fazendo o trabalho dele.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== CTA FINAL ====== -->
+<section class="cta-final">
+  <div class="container">
+    <h2>Pare de perder cliente para fila silenciosa.</h2>
+    <p>Não precisa de cartão. Em 2 minutos você vê funcionando.</p>
+    <a href="/demo.html" target="_blank" rel="noopener" class="btn btn-primary btn-large">Falar com o agente agora →</a>
+  </div>
+</section>
+
+<!-- ====== FOOTER ====== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="brand" style="margin-bottom: 12px;">
+          <div class="brand-mark" style="background: white; color: var(--primary);">IA</div>
+          <div class="brand-text" style="color: white;">IAtendo</div>
+        </div>
+        <p style="color: rgba(255,255,255,0.6); max-width: 320px;">A secretária IA que não dorme. Agendamento WhatsApp 24/7 para clínicas de 1 a 3 profissionais.</p>
+      </div>
+      <div>
+        <h4>Produto</h4>
+        <ul>
+          <li><a href="#video">Como funciona</a></li>
+          <li><a href="#planos">Planos</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="/crm/">IAtendo CRM</a></li>
+          <li><a href="/">Início IAtendo</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="mailto:contato@iatendo.com">contato@iatendo.com</a></li>
+          <li><a href="/demo.html">Testar o agente</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="/politica-de-privacidade.html">Política de Privacidade</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>
+        © 2026 Juliano Almeida Assessoria e Consultoria Empresarial · CNPJ 37.562.407/0001-12<br>
+        Av. Bicanga, 278, cs 59, Manguinhos, Serra/ES, 29173-049
+      </div>
+      <div>Feito em Vitória/ES · com clínicas reais</div>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING WHATSAPP FAB -->
+<a href="https://wa.me/5527988648027" target="_blank" rel="noopener" class="fab-whatsapp" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 32 32"><path d="M16 0C7.16 0 0 7.16 0 16c0 2.82.74 5.6 2.14 8.04L0 32l8.16-2.14C10.58 31.24 13.26 32 16 32c8.84 0 16-7.16 16-16S24.84 0 16 0zm0 29.34c-2.5 0-4.96-.68-7.1-1.96l-.5-.3-5.04 1.32 1.34-4.92-.32-.52A13.28 13.28 0 0 1 2.66 16c0-7.36 5.98-13.34 13.34-13.34S29.34 8.64 29.34 16 23.36 29.34 16 29.34zm7.34-9.98c-.4-.2-2.38-1.18-2.74-1.3-.36-.14-.64-.2-.9.2-.26.4-1.04 1.3-1.28 1.56-.24.26-.46.3-.86.1-.4-.2-1.7-.62-3.24-2-1.2-1.06-2-2.38-2.24-2.78-.24-.4-.02-.62.18-.82.18-.18.4-.46.6-.7.2-.24.26-.4.4-.66.14-.26.06-.5-.04-.7-.1-.2-.9-2.16-1.22-2.96-.32-.78-.66-.68-.9-.68-.24 0-.5-.04-.78-.04-.26 0-.7.1-1.06.5s-1.4 1.36-1.4 3.32 1.44 3.86 1.64 4.12c.2.26 2.84 4.34 6.88 6.08.96.42 1.72.66 2.3.86.96.3 1.84.26 2.54.16.78-.12 2.38-.98 2.72-1.92.34-.94.34-1.76.24-1.92-.1-.16-.36-.26-.76-.46z"/></svg>
+</a>
+
+<script>
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    q.parentElement.classList.toggle('open');
+  });
+});
+
+// Meta Pixel — disparar evento Lead em todo clique nos botões WhatsApp
+document.querySelectorAll('a[href*="wa.me/"]').forEach(a => {
+  a.addEventListener('click', () => {
+    if (typeof fbq === 'function') {
+      var dest = a.href.indexOf('5527988648027') > -1 ? 'humano_comercial' : 'agente_demo';
+      fbq('track', 'Lead', { content_name: dest });
+    }
+  });
+});
+
+// Meta Pixel — evento custom no primeiro play do vídeo demo
+(function () {
+  var v = document.getElementById('demo-video');
+  if (!v) return;
+  var fired = false;
+  v.addEventListener('play', function () {
+    if (!fired && typeof fbq === 'function') {
+      fired = true;
+      fbq('trackCustom', 'VideoDemoPlay', { content_name: 'demo_agente_60s' });
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
