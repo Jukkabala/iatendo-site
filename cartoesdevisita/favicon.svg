@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <circle cx="32" cy="30" r="24" fill="#1A8870"/>
+  <path d="M17 47 10 61l18-10Z" fill="#1A8870"/>
+  <text x="32" y="31" text-anchor="middle" dominant-baseline="central" fill="#fff" font-family="Arial,sans-serif" font-weight="700" font-size="23">IA</text>
+</svg>
