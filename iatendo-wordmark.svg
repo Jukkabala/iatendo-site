@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 120" role="img" aria-label="IAtendo">
+  <title>IAtendo - Wordmark</title>
+  <desc>Versão wordmark do logotipo IAtendo, símbolo + nome, sem tagline.</desc>
+  <g transform="translate(15, 12)">
+    <circle cx="48" cy="48" r="44" fill="#1A8870"/>
+    <polygon points="22,90 38,68 50,80" fill="#1A8870"/>
+    <text x="48" y="63" font-family="'Inter', 'Segoe UI', system-ui, sans-serif" font-size="42" font-weight="900" fill="#FFFFFF" text-anchor="middle" letter-spacing="-1">IA</text>
+  </g>
+  <text x="125" y="80" font-family="'Inter', 'Segoe UI', system-ui, sans-serif" font-size="62" font-weight="800" letter-spacing="-2">
+    <tspan fill="#1A8870">IA</tspan><tspan fill="#0F4C5C">tendo</tspan>
+  </text>
+</svg>
